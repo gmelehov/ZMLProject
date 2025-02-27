@@ -1,0 +1,108 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<App xmlns="ZMLAppSchema" name="APP" globalVar="GLOBAL" target="D:\DEV\DiffCode.ZmlProject\DiffCode.ZmlProject\Test2.xml.js">
+
+  <Sources>
+    <Source id="NamePartSrc" name="NamePartSrc" provider="local" key="id" autoload="true" pageSize="50">
+      <Item id="first" name="Личное имя" />
+      <Item id="mid" name="Отчество" />
+    </Source>
+    <Source id="GenderSrc" name="GenderSrc" provider="local" key="id" autoload="true" pageSize="50" descr="Локальные данные для комбобокса GenderCombo">
+      <Item id="m" name="Муж." />
+      <Item id="f" name="Жен." />
+    </Source>
+  </Sources>
+
+
+  <Actions>
+    <Action id="SomeAction1" run="rest" baseUrl="https://localhost:44320/ZmlProcessor/ProcessRawXml" method="POST" descr="Компиляция XML-разметки">
+      <Prm id="TestEditor1" scope="Editor" />
+      <set.prop targetId="TestEditor2" targetType="Editor" targetProp="value" />
+      
+    </Action>
+  </Actions>
+  
+
+  <ViewPort target="mainContainer" layout="hbox">
+    <Form id="TestForm" flex="1">
+      <Combo id="NamePartCombo" value="id" display="name" src="NamePartSrc" name="Часть имени" allowBlank="true">
+        <Template id="BaseComboList" itemSelector="combo-item" field_a="name"/>
+      </Combo>
+      <Combo id="GenderCombo" value="id" display="name" src="GenderSrc" name="Пол" allowBlank="true">
+        <Template id="BaseComboList" itemSelector="combo-item" field_a="name"/>
+      </Combo>
+      <MonthCombo id="MCombo" value="Id" display="Name" descr="ShortName">
+        <Template id="BaseComboList" itemSelector="combo-item" field_a="Name"/>
+      </MonthCombo>
+    </Form>
+    <Panel layout="vbox" flex="3">
+      <Editor id="TestEditor1" mode="xml" theme="Diff1" />
+      <Editor id="TestEditor2" mode="javascript" theme="js" />
+    </Panel>
+  </ViewPort>
+
+</App>
+
+
+
+
+
+
+
+
+
+
+<!--<?xml version="1.0" encoding="utf-8" ?>
+<App xmlns="ZMLAppSchema" name="APP" globalVar="GLOBAL" target="D:\DEV\DiffCode.ZmlProject\DiffCode.ZmlProject\Test2.xml.js">
+
+
+  <Sources>
+    <Source id="PersonNameSrc" name="PersonName" baseUrl="https://localhost:44324/" provider="rest" autoload="true">
+      <Prm scope="Combo" id="NamePartCombo" field="valueField" as="part" />
+      <Prm scope="Combo" id="GenderCombo" field="valueField" as="gender" />
+      <Field id="Id" type="int" key="true" name="№" minWidth="70" />
+      <Field id="Name" type="string" name="Name" minWidth="200" />
+      <Field id="Gender" type="string" name="Gender" minWidth="80" />
+      <Field id="Part" type="string" name="Part" minWidth="80" />
+    </Source>
+    <Source id="NamePartSrc" name="NamePartSrc" provider="local" key="id" autoload="true" pageSize="50">
+      <Item id="first" name="Личное имя" />
+      <Item id="mid" name="Отчество" />
+    </Source>
+    <Source id="GenderSrc" name="GenderSrc" provider="local" key="id" autoload="true" pageSize="50">
+      <Item id="m" name="Муж." />
+      <Item id="f" name="Жен." />
+    </Source>
+  </Sources>
+
+
+
+  <Actions>
+    <Action id="SomeAction1" run="rest" baseUrl="https://localhost:44320/ZmlProcessor/ProcessRawXml" method="POST">
+      <Prm id="TestEditor1" scope="Editor" />
+      <set.prop targetId="TestEditor2" targetType="Editor" targetProp="value" />
+    </Action>
+  </Actions>
+  
+  
+
+
+
+  <ViewPort target="mainContainer" layout="hbox">
+    <Form id="TestForm" flex="1">
+      <Combo id="NamePartCombo" value="id" display="name" src="NamePartSrc" name="Часть имени" allowBlank="true" />
+      <Combo id="GenderCombo" value="id" display="name" src="GenderSrc" name="Пол" allowBlank="true" />
+    </Form>
+    --><!--<List id="TestList" sel="single" flex="3">
+      <Template id="SimpleList" itemSelector="list-item" field_a="Name"/>
+    </List>--><!--
+    --><!--<Grid id="PersonNamesGrid" src="PersonNameSrc" sel="single-check" title="Имена" flex="3" />--><!--
+
+    
+    <Panel layout="vbox" flex="3">
+      <Editor id="TestEditor1" mode="xml" />
+      <Editor id="TestEditor2" mode="javascript" />
+    </Panel>
+  </ViewPort>
+  
+  
+</App>-->
