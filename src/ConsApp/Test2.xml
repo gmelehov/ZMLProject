@@ -1,8 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
-<App xmlns="ZMLAppSchema" name="APP" globalVar="GLOBAL" target="D:\DEV\DiffCode.ZmlProject\DiffCode.ZmlProject\Test2.xml.js">
+<App xmlns="ZMLAppSchema" name="ZML" globalVar="GLOBAL" target="F:\ZMLProject\src\ConsApp\Test2.xml.js">
+  
+  
 
   <Sources>
     <Source id="NamePartSrc" name="NamePartSrc" provider="local" key="id" autoload="true" pageSize="50">
+      <Field id="id" type="string" key="true" />
+      <Field id="name" type="string" />
       <Item id="first" name="Личное имя" />
       <Item id="mid" name="Отчество" />
     </Source>
@@ -23,7 +27,7 @@
   
 
   <ViewPort target="mainContainer" layout="hbox">
-    <Form id="TestForm" flex="1">
+    <Form id="TestForm" flex="1" bodyPadding="10">
       <Combo id="NamePartCombo" value="id" display="name" src="NamePartSrc" name="Часть имени" allowBlank="true">
         <Template id="BaseComboList" itemSelector="combo-item" field_a="name"/>
       </Combo>
@@ -35,6 +39,7 @@
       </MonthCombo>
     </Form>
     <Panel layout="vbox" flex="3">
+      <Grid id="Grid1" src="NamePartSrc" sel="single" flex="1" title="ЗАГОЛОВОК ТАБЛИЦЫ" />
       <Editor id="TestEditor1" mode="xml" theme="Diff1" />
       <Editor id="TestEditor2" mode="javascript" theme="js" />
     </Panel>

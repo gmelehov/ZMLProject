@@ -30,7 +30,7 @@ namespace ZMLProject.Models.Data
 
 
 
-    public virtual string Name => this["name"];
+    public virtual string Name => this["name"] ?? this["id"];
 
     public abstract ObjectBody Column { get; }
 

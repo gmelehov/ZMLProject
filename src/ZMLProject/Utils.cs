@@ -38,15 +38,6 @@ public static class Utils
 
 
 
-
-
-
-
-
-
-
-
-
   public static string CompileScripts(string filepath)
   {
     var compiler = XDocument.Load(filepath);
@@ -64,10 +55,14 @@ public static class Utils
 
     return string.Join("\r\n\r\n\r\n\r\n", templates.SelectMany(s => s.Value));
   }
+  
+  
   public static void CompileItemTemplates(string folderPath)
   {
     ItemTemplatesDict = new DirectoryInfo(folderPath).GetFiles("*.*", SearchOption.AllDirectories).ToDictionary(k => k.Name.Replace(k.Extension, ""), d => Handlebars.Compile(File.ReadAllText(d.FullName))).ToDictionary(kk => kk.Key, vv => vv.Value);
   }
+
+
   public static void CompileItemTemplates()
   {
     var templates = new Dictionary<string, string>
@@ -83,14 +78,6 @@ public static class Utils
     };
     ItemTemplatesDict = templates.ToDictionary(k => k.Key, d => Handlebars.Compile(d.Value));
   }
-
-
-
-
-
-
-
-
 
 
 
@@ -118,24 +105,13 @@ public static class Utils
     return content.Select(s => s.Trim()).Where(w => w.Length > 0).ToList();
   }
 
+
   public static AbstractExpression GetNewExtTemplate(string templateName, Dictionary<string, string> templateDict) => new NewExpr(MEMB(ID("Ext"), CALL("XTemplate", Args(CompileItemTemplateAsStrings(ItemTemplatesDict[templateName], templateDict).Select(t => Str(t))))));
-
-
-
-
-
-
-
 
 
 
   public static MemberAccess MatIconLinker(string ns, ObjectBody obj) => MEMB(ID(ns), CALL("MatIconLinker", Args(obj)));
   public static MemberAccess IconLinker(string ns, ObjectBody obj) => MEMB(ID(ns), CALL("IconLinker", Args(obj)));
-
-
-
-
-
 
 
 
@@ -153,11 +129,6 @@ public static class Utils
       );
     return xdoc;
   }
-
-
-
-
-
 
 
   public static XName F(string name) => XName.Get(name, "ZMLAppSchema");

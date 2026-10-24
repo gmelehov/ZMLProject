@@ -1,9 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <x:schema id="ZMLAppSchema" targetNamespace="ZMLAppSchema" elementFormDefault="qualified" xmlns="ZMLAppSchema" xmlns:x="http://www.w3.org/2001/XMLSchema">
 
-  
-  
-  
+    
 
   <x:element name="App">
     <x:complexType>

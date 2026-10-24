@@ -134,22 +134,18 @@ public abstract class BasePanel : ZmlContainer, IBasePanel
   {
     _items.AddRange(source.Elements().Select(el =>
     {
-      var name = el.Name.LocalName;
-      IZmlComponent ret;
-      switch (name)
+      IZmlComponent ret = el.Name.LocalName switch
       {
-        case "Tabpanel": ret = new Tabpanel(this, el); break;
-        case "Panel": ret = new Panel(this, el); break;
-        case "Grid": ret = new Grid(this, el); break;
-        case "Form": ret = new Form(this, el); break;
-        case "Editor": ret = new Editor(this, el); break;
-        case "List": ret = new List(this, el); break;
-        case "Splitter": ret = new Splitter(this, el.Cut()); break;
-        case "Tree": ret = new Tree(this, el); break;
-        case "Chart": ret = new Chart(this, el); break;
-
-
-        default: ret = null; break;
+        "Tabpanel" => new Tabpanel(this, el),
+        "Panel" => new Panel(this, el),
+        "Grid" => new Grid(this, el),
+        "Form" => new Form(this, el),
+        "Editor" => new Editor(this, el),
+        "List" => new List(this, el),
+        "Splitter" => new Splitter(this, el.Cut()),
+        "Tree" => new Tree(this, el),
+        "Chart" => new Chart(this, el),
+        _ => null,
       };
       return ret;
     })
@@ -202,6 +198,7 @@ public abstract class BasePanel : ZmlContainer, IBasePanel
     +
     KV_Docked
     ;
+  
   protected abstract ObjectBody SpecificKeyValues { get; }
 
 

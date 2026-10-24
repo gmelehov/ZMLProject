@@ -18,19 +18,11 @@ public class JSExpressionsService : IJSExpressionsService
   private string appname;
 
 
-
-
-
   public JSExpressionsService(string globalVar = "GLOBAL", string appName = "APP")
   {
     globalvar = globalVar;
     appname = appName;
   }
-
-
-
-
-
 
 
   public void SetNewAppInfo(string globalVar, string appName)
@@ -40,37 +32,19 @@ public class JSExpressionsService : IJSExpressionsService
   }
 
 
-
-
-
-
-
-
   public Identifier GLOBAL => ID(globalvar);
   public Identifier APP => ID(appname);
   public Identifier VIEW => ID("VIEW");
   public MemberAccess GLOBAL_APP_VIEW => new MemberAccess(GLOBAL, APP, VIEW);
 
 
-  
   public Identifier EXT => ID("Ext");
   public Identifier STOREMANAGER => ID("StoreManager");
-
-
 
 
   public MemberAccess Locator(string type) => new MemberAccess(GLOBAL, APP, ID(type));
   public MemberAccess ActionCaller(string actionId) => Locator("Action").AddExpr(CALL(actionId, Args()));
   public MemberAccess ActionCaller(string actionId, ArgumentsBlock arg) => Locator("Action").AddExpr(CALL(actionId, arg));
-
-
-
-
-
-
-
-
-
 
 
 
@@ -127,12 +101,6 @@ public class JSExpressionsService : IJSExpressionsService
   public MemberAccess Ext_widget(ObjectBody obj) => new MemberAccess(EXT, CALL("widget", Args(obj)));
   public MemberAccess Ext_widget(string name, ObjectBody obj) => new MemberAccess(EXT, CALL("widget", Args(Str(name), obj)));
   public MemberAccess Ext_StoreManager_SaveNewRecord(string id, IEnumerable<Param> linkers) => new MemberAccess(EXT, STOREMANAGER, CALL("SAVENEWRECORD", Args(Str(id), Arr(linkers.Select(s => s.AsExprs)))));
-
-
-
-
-
-
 
 
 
@@ -223,7 +191,6 @@ public class JSExpressionsService : IJSExpressionsService
       [ElProps.Mode] = gp => Loader(gp.ScopeId).GetMode(),
     },
 
-
   };
 
 
@@ -301,9 +268,6 @@ public class JSExpressionsService : IJSExpressionsService
 
 
 
-
-
-
   public Dictionary<string, Dictionary<string, Func<ValueAdder, MemberAccess>>> Value_Adder => new Dictionary<string, Dictionary<string, Func<ValueAdder, MemberAccess>>>
   {
     [ElTypes.Panel] = new Dictionary<string, Func<ValueAdder, MemberAccess>>
@@ -346,28 +310,6 @@ public class JSExpressionsService : IJSExpressionsService
   };
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   public GridLocator Grid(string id) => new GridLocator(globalvar, appname, id);
   public ComboLocator Combo(string id) => new ComboLocator(globalvar, appname, id);
   public InputLocator Input(string id) => new InputLocator(globalvar, appname, id);
@@ -383,6 +325,5 @@ public class JSExpressionsService : IJSExpressionsService
   public FormLocator Form(string id) => new FormLocator(globalvar, appname, id);
   public TabpanelLocator Tabpanel(string id) => new TabpanelLocator(globalvar, appname, id);
   public LoaderLocator Loader(string id) => new LoaderLocator(globalvar, appname, id);
-
 
 }

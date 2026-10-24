@@ -5,12 +5,6 @@ using System.Diagnostics;
 using ZMLProject.Enums;
 
 
-
-
-
-
-
-
 namespace ZMLProject.Models
 {
   /// <summary>
@@ -27,13 +21,6 @@ namespace ZMLProject.Models
     }
 
 
-
-
-
-
-
-
-
     public override ExtJSClassExpression AsDefine => null;
     protected override ObjectBody SpecificKeyValues => OBJ(false, false,
       KV_AppNAME,
@@ -46,14 +33,6 @@ namespace ZMLProject.Models
       );
 
 
-
-
-
-
-
-
-
-
     public override string XType => App.bsrv.Editor(this).XType;
     public string Mode => this["mode"];
     public string Theme => this["theme"];
@@ -61,15 +40,6 @@ namespace ZMLProject.Models
     public bool? LineNumbers => parseBoolAttr("lineNumbers");
     public bool? LineWrapping => parseBoolAttr("lineWrap");
     public override string Layout => App.bsrv.Editor(this).Layout;
-
-
-
-
-
-
-
-
-
 
 
     [DebuggerBrowsable(DebuggerBrowsableState.Never)]
