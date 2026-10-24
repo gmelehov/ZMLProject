@@ -7,8 +7,6 @@
     <Source id="NamePartSrc" name="NamePartSrc" provider="local" key="id" autoload="true" pageSize="50">
       <Field id="id" type="string" key="true" />
       <Field id="name" type="string" />
-      <Item id="first" name="Личное имя" />
-      <Item id="mid" name="Отчество" />
     </Source>
     <Source id="GenderSrc" name="GenderSrc" provider="local" key="id" autoload="true" pageSize="50" descr="Локальные данные для комбобокса GenderCombo">
       <Item id="m" name="Муж." />
@@ -46,13 +44,6 @@
   </ViewPort>
 
 </App>
-
-
-
-
-
-
-
 
 
 
